@@ -277,6 +277,8 @@ body::after{content:"";position:fixed;inset:0;background-image:linear-gradient(r
       <input class="admin-inp" id="ap1tb" placeholder="210"/>
       <div class="admin-label">رقم الواتساب</div>
       <input class="admin-inp" id="apwa" placeholder="21628423255"/>
+      <div class="admin-label">🔗 Google Sheets URL (لتسجيل الحرفاء)</div>
+      <input class="admin-inp" id="apsheet" placeholder="https://script.google.com/macros/s/..." style="font-size:10px;"/>
       <div class="admin-label">رسالة الترحيب</div>
       <input class="admin-inp" id="apwelcome" placeholder="مرحباً بك في Bashtech..."/>
       <button class="admin-save" onclick="saveSettings()">💾 حفظ</button>
@@ -592,6 +594,7 @@ function renderAdmin(){
   document.getElementById("ap500").value=cfg.p500;
   document.getElementById("ap1tb").value=cfg.p1tb;
   document.getElementById("apwa").value=cfg.wa;
+  document.getElementById("apsheet").value=cfg.sheetUrl||"";
   document.getElementById("apwelcome").value=cfg.welcome;
   document.getElementById("st-v").textContent=stats.visits;
   document.getElementById("st-c").textContent=stats.chats;
@@ -610,6 +613,7 @@ function saveSettings(){
   cfg.p500=document.getElementById("ap500").value||"170";
   cfg.p1tb=document.getElementById("ap1tb").value||"210";
   cfg.wa=document.getElementById("apwa").value||WA_DEF;
+  cfg.sheetUrl=document.getElementById("apsheet").value||"";
   cfg.welcome=document.getElementById("apwelcome").value||cfg.welcome;
   save();
   document.getElementById("price500-display").textContent=cfg.p500+" دينار";
@@ -799,6 +803,21 @@ function submitLead(){
   addScore(5);
   const price=selHdd==="500"?cfg.p500:cfg.p1tb;
   stats.leads.push({...lead, date:new Date().toLocaleDateString("ar")}); save();
+
+  // Send to Google Sheets
+  const SHEET_URL = cfg.sheetUrl||"";
+  if(SHEET_URL){
+    fetch(SHEET_URL, {
+      method:"POST", mode:"no-cors",
+      headers:{"Content-Type":"application/json"},
+      body: JSON.stringify({
+        name:n, phone:p, city:c||"—", model:m||"PS4",
+        hdd:lead.hdd, price:price,
+        date:new Date().toLocaleString("ar")
+      })
+    }).catch(()=>{});
+  }
+
   const msg=`مرحباً بشير! 🎮
 اسمي: ${n}
 رقمي: ${p}
