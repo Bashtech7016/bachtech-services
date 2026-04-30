@@ -24,8 +24,11 @@ body::after{content:"";position:fixed;inset:0;background-image:linear-gradient(r
 .prog-bar{height:3px;background:var(--s2);flex-shrink:0;}
 .prog-fill{height:100%;background:linear-gradient(90deg,#0369a1,#0ea5e9);transition:width .5s;width:0%;}
 .tabs{display:flex;background:var(--s1);border-bottom:1px solid var(--bd);flex-shrink:0;}
-.tab{flex:1;padding:10px;text-align:center;font-size:13px;color:var(--mu);cursor:pointer;border:none;background:none;font-family:"Tajawal",sans-serif;transition:all .2s;border-bottom:2px solid transparent;}
-.tab.active{color:var(--b2);border-bottom-color:var(--blue);}
+.tab{flex:1;padding:10px;text-align:center;font-size:13px;color:var(--mu);cursor:pointer;border:none;background:none;font-family:"Tajawal",sans-serif;transition:all .22s;border-bottom:2px solid transparent;position:relative;}
+.tab::after{content:"";position:absolute;bottom:-1px;left:50%;right:50%;height:2px;background:var(--blue);border-radius:2px;transition:all .25s;}
+.tab:hover{color:var(--tx);}
+.tab.active{color:var(--b2);}
+.tab.active::after{left:0;right:0;}
 /* Landing */
 #landing{flex:1;overflow-y:auto;display:none;flex-direction:column;scroll-behavior:smooth;}
 #landing.show{display:flex;}
@@ -36,7 +39,11 @@ body::after{content:"";position:fixed;inset:0;background-image:linear-gradient(r
 .hero-title{font-size:26px;font-weight:900;color:#fff;line-height:1.3;margin-bottom:6px;}
 .hero-title span{color:var(--blue);}
 .hero-sub{font-size:13px;color:var(--b2);line-height:1.7;}
-.cta-big{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#16a34a,#22c55e);color:#fff;padding:13px 24px;border-radius:25px;font-size:15px;font-weight:700;text-decoration:none;margin-top:14px;font-family:"Tajawal",sans-serif;box-shadow:0 6px 20px #22c55e33;}
+.cta-big{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#16a34a,#22c55e,#4ade80);background-size:200% 200%;color:#fff;padding:14px 28px;border-radius:30px;font-size:15px;font-weight:700;text-decoration:none;margin-top:14px;font-family:"Tajawal",sans-serif;box-shadow:0 8px 28px #22c55e40,0 0 0 0 #22c55e66;position:relative;overflow:hidden;transition:all .3s;animation:cta-pulse 2.5s ease-in-out infinite;}
+.cta-big::before{content:"";position:absolute;inset:0;background:linear-gradient(105deg,transparent 40%,rgba(255,255,255,.25) 50%,transparent 60%);transform:translateX(-100%);transition:transform .5s;}
+.cta-big:hover{transform:translateY(-2px) scale(1.04);box-shadow:0 12px 36px #22c55e55,0 0 0 4px #22c55e22;}
+.cta-big:hover::before{transform:translateX(100%);}
+@keyframes cta-pulse{0%,100%{box-shadow:0 8px 28px #22c55e40,0 0 0 0 #22c55e44}50%{box-shadow:0 8px 28px #22c55e50,0 0 0 8px #22c55e00}}
 .services-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:16px;}
 .svc-card{background:var(--s2);border:1px solid var(--bd);border-radius:13px;padding:14px;text-align:center;}
 .svc-icon{font-size:26px;margin-bottom:6px;}
@@ -67,8 +74,10 @@ body::after{content:"";position:fixed;inset:0;background-image:linear-gradient(r
 .map-info-row{padding:14px;display:flex;gap:12px;align-items:flex-start;}
 .map-icon{font-size:28px;}
 .map-info{font-size:13px;color:var(--tx);line-height:1.9;}
-.map-link{display:flex;align-items:center;gap:8px;background:#0369a133;border:1px solid #0369a1;border-radius:10px;padding:10px 14px;margin:0 14px 14px;color:var(--b2);text-decoration:none;font-size:13px;font-weight:700;font-family:"Tajawal",sans-serif;transition:background .2s;}
-.map-link:hover{background:#0369a155;}
+.map-link{display:flex;align-items:center;gap:8px;background:linear-gradient(135deg,#0369a122,#0ea5e911);border:1px solid #0369a188;border-radius:11px;padding:11px 16px;margin:0 14px 14px;color:var(--b2);text-decoration:none;font-size:13px;font-weight:700;font-family:"Tajawal",sans-serif;transition:all .25s;position:relative;overflow:hidden;}
+.map-link::before{content:"";position:absolute;inset:0;background:linear-gradient(105deg,transparent 35%,rgba(14,165,233,.12) 50%,transparent 65%);transform:translateX(-100%);transition:transform .45s;}
+.map-link:hover{background:linear-gradient(135deg,#0369a133,#0ea5e922);border-color:var(--blue);box-shadow:0 4px 16px #0ea5e925;transform:translateY(-1px);}
+.map-link:hover::before{transform:translateX(100%);}
 /* Chat */
 #chat{display:none;flex:1;flex-direction:column;min-height:0;}
 .msgs{flex:1;overflow-y:auto;padding:16px 12px;display:flex;flex-direction:column;gap:10px;scroll-behavior:smooth;}
@@ -81,16 +90,22 @@ body::after{content:"";position:fixed;inset:0;background-image:linear-gradient(r
 .bot .bbl{background:var(--s2);border:1px solid var(--bd);border-bottom-right-radius:4px;color:var(--tx);}
 .usr .bbl{background:linear-gradient(135deg,#0369a1,#0ea5e9);border-bottom-left-radius:4px;color:#fff;}
 .qrs{display:flex;flex-wrap:wrap;gap:7px;padding:3px 0 6px 40px;animation:fu .4s ease;}
-.qr{background:var(--s2);border:1px solid var(--bd);border-radius:18px;padding:7px 13px;font-size:13px;font-family:"Tajawal",sans-serif;color:var(--b2);cursor:pointer;transition:all .2s;}
-.qr:hover{background:#1a3050;border-color:var(--blue);color:#fff;transform:translateY(-1px);}
+.qr{background:linear-gradient(135deg,var(--s2),#162035);border:1px solid #2a4068;border-radius:20px;padding:8px 15px;font-size:13px;font-family:"Tajawal",sans-serif;color:var(--b2);cursor:pointer;transition:all .22s;position:relative;overflow:hidden;}
+.qr::after{content:"";position:absolute;inset:0;background:linear-gradient(105deg,transparent 40%,rgba(14,165,233,.15) 50%,transparent 60%);transform:translateX(-100%);transition:transform .4s;}
+.qr:hover{background:linear-gradient(135deg,#1a3050,#0f2240);border-color:var(--blue);color:#fff;transform:translateY(-2px);box-shadow:0 4px 16px #0ea5e930;}
+.qr:hover::after{transform:translateX(100%);}
+.qr:active{transform:translateY(0) scale(.97);}
 .typing{display:flex;gap:5px;padding:12px 15px;align-items:center;}
 .typing span{width:7px;height:7px;background:var(--mu);border-radius:50%;animation:bounce 1.2s infinite;}
 .typing span:nth-child(2){animation-delay:.2s;}.typing span:nth-child(3){animation-delay:.4s;}
 @keyframes bounce{0%,60%,100%{transform:translateY(0)}30%{transform:translateY(-6px)}}
 .info-box{background:#0a1a0f;border:1px solid #166534;border-radius:11px;padding:11px 13px;margin-top:9px;font-size:13px;color:#86efac;line-height:1.9;}
 .step-box{background:#0f1a2e;border:1px solid #1e3a5f;border-radius:11px;padding:11px 13px;margin-top:9px;font-size:13px;color:#bae6fd;line-height:1.9;}
-.wa-btn{display:inline-flex;align-items:center;gap:7px;background:#16a34a;color:#fff;padding:9px 17px;border-radius:22px;font-size:13px;font-weight:700;text-decoration:none;margin-top:9px;font-family:"Tajawal",sans-serif;border:none;cursor:pointer;}
-.wa-btn:hover{background:#15803d;}
+.wa-btn{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#15803d,#16a34a,#22c55e);background-size:200%;color:#fff;padding:10px 20px;border-radius:25px;font-size:13px;font-weight:700;text-decoration:none;margin-top:9px;font-family:"Tajawal",sans-serif;border:none;cursor:pointer;box-shadow:0 5px 20px #16a34a44;position:relative;overflow:hidden;transition:all .25s;}
+.wa-btn::before{content:"";position:absolute;inset:0;background:linear-gradient(105deg,transparent 35%,rgba(255,255,255,.2) 50%,transparent 65%);transform:translateX(-100%);transition:transform .45s;}
+.wa-btn:hover{transform:translateY(-2px);box-shadow:0 8px 26px #22c55e55;background-position:right;}
+.wa-btn:hover::before{transform:translateX(100%);}
+.wa-btn:active{transform:scale(.97);}
 .badge{display:inline-block;background:#f59e0b22;border:1px solid #f59e0b66;color:#fbbf24;border-radius:7px;padding:2px 9px;font-size:12px;font-weight:700;margin-bottom:5px;}
 .score{display:inline-block;padding:3px 10px;border-radius:10px;font-size:11px;font-weight:700;margin-top:6px;}
 .score.hot{background:#16a34a22;border:1px solid #16a34a;color:#4ade80;}
@@ -101,14 +116,20 @@ body::after{content:"";position:fixed;inset:0;background-image:linear-gradient(r
 .lead-form input:focus{border-color:var(--blue);}
 .lead-form input::placeholder{color:var(--mu);}
 .hdd-picker{display:flex;gap:8px;margin-bottom:8px;}
-.hdd-btn{flex:1;padding:9px;background:#060e1a;border:1px solid var(--bd);border-radius:8px;color:var(--mu);font-size:13px;font-family:"Tajawal",sans-serif;cursor:pointer;transition:all .2s;text-align:center;}
-.hdd-btn.selected{border-color:var(--blue);color:var(--b2);background:#0f1a2e;}
-.sub-btn{width:100%;padding:10px;background:linear-gradient(90deg,#0369a1,#0ea5e9);border:none;border-radius:8px;color:#fff;font-size:14px;font-weight:700;cursor:pointer;font-family:"Tajawal",sans-serif;}
+.hdd-btn{flex:1;padding:9px;background:#060e1a;border:1.5px solid var(--bd);border-radius:10px;color:var(--mu);font-size:13px;font-family:"Tajawal",sans-serif;cursor:pointer;transition:all .22s;text-align:center;}
+.hdd-btn:hover{border-color:#2a4068;color:var(--tx);}
+.hdd-btn.selected{border-color:var(--blue);color:var(--b2);background:linear-gradient(135deg,#0a1830,#0f2040);box-shadow:0 0 14px #0ea5e922;}
+.sub-btn{width:100%;padding:11px;background:linear-gradient(90deg,#0369a1,#0ea5e9,#38bdf8);background-size:200%;border:none;border-radius:10px;color:#fff;font-size:14px;font-weight:700;cursor:pointer;font-family:"Tajawal",sans-serif;position:relative;overflow:hidden;box-shadow:0 5px 18px #0ea5e940;transition:all .25s;}
+.sub-btn::before{content:"";position:absolute;inset:0;background:linear-gradient(105deg,transparent 35%,rgba(255,255,255,.2) 50%,transparent 65%);transform:translateX(-100%);transition:transform .45s;}
+.sub-btn:hover{background-position:right;box-shadow:0 7px 24px #0ea5e950;transform:translateY(-1px);}
+.sub-btn:hover::before{transform:translateX(100%);}
+.sub-btn:active{transform:scale(.98);}
 .inp-area{background:var(--s1);border-top:1px solid var(--bd);padding:12px 14px;display:flex;gap:9px;align-items:center;flex-shrink:0;}
 .inp{flex:1;background:var(--bg);border:1px solid var(--bd);border-radius:22px;padding:10px 16px;font-size:14px;font-family:"Tajawal",sans-serif;color:var(--tx);outline:none;transition:border-color .2s;direction:rtl;}
 .inp:focus{border-color:var(--blue);}.inp::placeholder{color:var(--mu);}
-.send{width:42px;height:42px;background:linear-gradient(135deg,#0369a1,#0ea5e9);border:none;border-radius:50%;color:#fff;font-size:17px;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 14px #0ea5e940;transition:transform .2s;flex-shrink:0;}
-.send:hover{transform:scale(1.08);}
+.send{width:44px;height:44px;background:linear-gradient(135deg,#0369a1,#0ea5e9);border:none;border-radius:50%;color:#fff;font-size:17px;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px #0ea5e950;transition:all .22s;flex-shrink:0;}
+.send:hover{transform:scale(1.1);box-shadow:0 6px 22px #0ea5e960;}
+.send:active{transform:scale(.95);}
 /* Admin */
 #adminPanel{position:fixed;inset:0;background:#000b;z-index:999;display:none;align-items:center;justify-content:center;}
 #adminPanel.show{display:flex;}
@@ -118,7 +139,9 @@ body::after{content:"";position:fixed;inset:0;background-image:linear-gradient(r
 .admin-label{font-size:12px;color:var(--mu);margin-bottom:4px;margin-top:10px;}
 .admin-inp{width:100%;background:#060e1a;border:1px solid var(--bd);border-radius:8px;padding:9px 12px;color:var(--tx);font-size:13px;font-family:"Tajawal",sans-serif;outline:none;direction:rtl;margin-bottom:4px;}
 .admin-inp:focus{border-color:var(--blue);}
-.admin-save{width:100%;margin-top:14px;padding:11px;background:linear-gradient(90deg,#0369a1,#0ea5e9);border:none;border-radius:9px;color:#fff;font-size:14px;font-weight:700;cursor:pointer;font-family:"Tajawal",sans-serif;}
+.admin-save{width:100%;margin-top:14px;padding:11px;background:linear-gradient(90deg,#0369a1,#0ea5e9,#38bdf8);background-size:200%;border:none;border-radius:9px;color:#fff;font-size:14px;font-weight:700;cursor:pointer;font-family:"Tajawal",sans-serif;box-shadow:0 4px 16px #0ea5e940;transition:all .25s;}
+.admin-save:hover{background-position:right;box-shadow:0 6px 22px #0ea5e950;transform:translateY(-1px);}
+.admin-save:active{transform:scale(.98);}
 .admin-sec{background:#060e1a;border:1px solid var(--bd);border-radius:10px;padding:12px;margin-top:12px;}
 .admin-sec-title{font-size:13px;font-weight:700;color:var(--b2);margin-bottom:8px;}
 .stat-row{display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid var(--bd);font-size:13px;}
@@ -211,7 +234,7 @@ background-repeat:repeat;background-size:200px;opacity:0.03;}
         <div style="font-size:.88rem;font-weight:900;color:#fbbf24;margin-bottom:3px;">📋 Référence — أول شيء يجب معرفته هو الترقيم</div>
         <div style="font-size:.8rem;color:#fde68a;margin-bottom:6px;">Exemple: <b style="color:#fff;font-size:.9rem;">CUH-2016B</b> (PlayStation 4)</div>
         <div style="font-size:1rem;font-weight:900;color:#fff;margin-bottom:4px;">
-          Firmware <span style="background:#ef4444;color:#fff;padding:2px 10px;border-radius:6px;font-size:1.05rem;">13.02</span> أو أحدث
+          Firmware <span style="background:#22c55e;color:#fff;padding:2px 10px;border-radius:6px;font-size:1.05rem;">13.02</span> إلى <span style="background:#22c55e;color:#fff;padding:2px 10px;border-radius:6px;font-size:1.05rem;">13.50</span> أو آخر تحديث ✅
         </div>
         <div style="font-size:.8rem;color:#fca5a5;line-height:1.6;margin-top:4px;">
           تحقق: الإعدادات ← النظام ← معلومات النظام<br>
@@ -553,6 +576,7 @@ const INTENTS = [
   <input id="lc" placeholder="🏙️ مدينتك"/>
   <input id="lm" placeholder="🎮 موديل جهازك (Fat/Slim/Pro)"/>
   <input id="lv" placeholder="🖥️ Version système (مثال: 13.02)" style="direction:ltr;" oninput="this.value=this.value.replace(/[^0-9.]/g,'')"/>
+  <div style="font-size:11px;color:#64748b;margin-top:-5px;margin-bottom:8px;padding-right:4px;"></div>
   <div style="font-size:12px;color:var(--mu);margin-bottom:6px;">حجم الـ Disque dur:</div>
   <div class="hdd-picker">
     <div class="hdd-btn" id="hdd500" onclick="selectHdd('500')">500 GB<br><b style="color:#fbbf24">170 د</b></div>
@@ -733,7 +757,7 @@ const QRS = [
   {l:"🕹️ 9adeh Teb9a wa9t leplay?", t:"9adeh Teb9a wa9t leplay"},
   {l:"📦 kifech Nab3athlk LePlay 😉", t:"كيف أبعث الجهاز؟"},
   {l:"📍 Adresse / الموقع", t:"وين موقعكم؟"},
-  {l:"✅ CBon Fhemt Kolchay\nN7eb Nriguel Play Mta3i 😎", t:"احجز"},
+  {l:"CBon ✅ Fhemtk N7eb Nriguel Play MTA3I💯🔥", t:"احجز"},
 ];
 
 function matchIntent(text){
@@ -834,7 +858,7 @@ function showCompatFat(){
   document.querySelectorAll('.step-box, .qrs').forEach(e=>e.remove());
   compatibleChecked = true;
   addScore(4);
-  addMsg(`<div class="bbl">✅ <b>PS4 Phat — Compatible 100%</b><br>جميع الإصدارات قابلة للبرمجة بدون استثناء 🎉<br><img src="${IMG_FAT_BACK}" style="width:100%;border-radius:9px;margin-top:8px;border:1px solid #1e3a5f;"/><br>✅ Play Mta3ek Yemchi بدون مشاكل!</div>`,"bot");
+  addMsg(`<div class="bbl">✅ <b>PS4 Phat — Compatible 100%</b><br>جميع الإصدارات قابلة للبرمجة بدون استثناء 🎉<br><img src="${IMG_FAT_BACK}" style="width:100%;border-radius:9px;margin-top:8px;border:1px solid #1e3a5f;"/><br>✅ Play Mta3ek Yemchi بدون مشاكل!<br><br>👇 <b>اذهب الآن واضغط على الزر:</b><br><button onclick="processInput('احجز','CBon ✅ Fhemtk N7eb Nriguel Play MTA3I💯🔥')" style="width:100%;margin-top:10px;padding:13px;background:linear-gradient(135deg,#16a34a,#22c55e,#4ade80);background-size:200%;border:none;border-radius:12px;color:#fff;font-size:14px;font-weight:900;cursor:pointer;font-family:Tajawal,sans-serif;box-shadow:0 5px 20px #22c55e44;position:relative;overflow:hidden;transition:all .3s;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">CBon ✅ Fhemtk N7eb Nriguel Play MTA3I💯🔥</button></div>`,"bot");
   showQR();
 }
 function showCompatSlim(){
@@ -857,7 +881,7 @@ function showCompatPro(){
   document.querySelectorAll('.step-box, .qrs').forEach(e=>e.remove());
   compatibleChecked = true;
   addScore(4);
-  addMsg(`<div class="bbl">✅ <b>PS4 Pro — Compatible 100%</b><br>جميع الإصدارات قابلة للبرمجة 🎉<br><small style="color:#fbbf24;font-weight:900;">تحقق من الفيشة الخلفية — لازم تكون كبيرة كما في الصورة 👇</small><br><img src="${IMG_PRO_BIG}" style="width:100%;border-radius:9px;margin-top:8px;border:2px solid #4ade80;"/><br><div style="background:#1a0a0a;border:2px solid #ef4444;border-radius:10px;padding:10px 12px;margin-top:8px;text-align:right;"><div style="font-size:13px;font-weight:900;color:#ff6b6b;margin-bottom:5px;">⚠️ تنبيه</div><div style="font-size:13px;color:#fff;font-weight:700;line-height:1.7;">إذا كانت الفيشة الخلفية عندك <b style="color:#fbbf24;">صغيرة</b> مثل PS4 Slim<br>Lazem Tjibelna Play bch Nchoufouha sur Place — Programmeable ou non 🔧</div></div></div>`,"bot");
+  addMsg(`<div class="bbl">✅ <b>PS4 Pro — Compatible 100%</b><br>جميع الإصدارات قابلة للبرمجة 🎉<br><small style="color:#fbbf24;font-weight:900;">تحقق من الفيشة الخلفية — لازم تكون كبيرة كما في الصورة 👇</small><br><img src="${IMG_PRO_BIG}" style="width:100%;border-radius:9px;margin-top:8px;border:2px solid #4ade80;"/><br><div style="background:#1a0a0a;border:2px solid #ef4444;border-radius:10px;padding:10px 12px;margin-top:8px;text-align:right;"><div style="font-size:13px;font-weight:900;color:#ff6b6b;margin-bottom:5px;">⚠️ تنبيه</div><div style="font-size:13px;color:#fff;font-weight:700;line-height:1.7;">إذا كانت الفيشة الخلفية عندك <b style="color:#fbbf24;">صغيرة</b> مثل PS4 Slim<br>Lazem Tjibelna Play bch Nchoufouha sur Place — Programmeable ou non 🔧</div></div><br>👇 <b>اذهب الآن واضغط على الزر:</b><br><button onclick="processInput('احجز','CBon ✅ Fhemtk N7eb Nriguel Play MTA3I💯🔥')" style="width:100%;margin-top:10px;padding:13px;background:linear-gradient(135deg,#16a34a,#22c55e,#4ade80);background-size:200%;border:none;border-radius:12px;color:#fff;font-size:14px;font-weight:900;cursor:pointer;font-family:Tajawal,sans-serif;box-shadow:0 5px 20px #22c55e44;transition:all .3s;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">CBon ✅ Fhemtk N7eb Nriguel Play MTA3I💯🔥</button></div>`,"bot");
   showQR();
 }
 
@@ -886,7 +910,7 @@ function checkCUH(){
     } else if(val.match(/^CUH-\d{4}[A-Z]$/)){
       addScore(4);
       compatibleChecked = true;
-      addMsg(`<div class="bbl">✅ <b>${val}</b><br>🎉 <b>Play Mta3ek Compatible!</b><br>يمكن برمجتها بدون مشاكل ✅</div>`, "bot");
+      addMsg(`<div class="bbl">✅ <b>${val}</b><br>🎉 <b>Play Mta3ek Compatible!</b><br>يمكن برمجتها بدون مشاكل ✅<br><br>👇 <b>اذهب الآن واضغط على الزر:</b><br><button onclick="processInput('احجز','CBon ✅ Fhemtk N7eb Nriguel Play MTA3I💯🔥')" style="width:100%;margin-top:10px;padding:13px;background:linear-gradient(135deg,#16a34a,#22c55e,#4ade80);background-size:200%;border:none;border-radius:12px;color:#fff;font-size:14px;font-weight:900;cursor:pointer;font-family:Tajawal,sans-serif;box-shadow:0 5px 20px #22c55e44;transition:all .3s;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">CBon ✅ Fhemtk N7eb Nriguel Play MTA3I💯🔥</button></div>`, "bot");
       showQR();
     } else {
       addMsg(`<div class="bbl">🔍 <b>${val}</b><br>الرقم ما نعرفوش بالضبط — تأكد من الكتابة الصحيحة<br><small style="color:var(--mu);">الرقم عادةً يكون مثل: 1216A / 2016B / 2216B</small></div>`, "bot");
@@ -1003,23 +1027,19 @@ function submitLead(){
   const price=selHdd==="500"?cfg.p500:cfg.p1tb;
   stats.leads.push({...lead, date:new Date().toLocaleDateString("ar")}); save();
 
-  // Send to Google Sheets via hidden iframe (bypasses CORS)
-  const SHEET_URL = cfg.sheetUrl||"";
-  if(SHEET_URL){
-    try {
-      const params = new URLSearchParams({
-        name:n, phone:p, city:c||"—", model:m||"PS4",
-        version:v||"—",
-        hdd:lead.hdd, price:String(price),
-        date:new Date().toLocaleString("fr")
-      });
-      const ifrm = document.createElement("iframe");
-      ifrm.style.display = "none";
-      ifrm.src = SHEET_URL + "?" + params.toString();
-      document.body.appendChild(ifrm);
-      setTimeout(()=>{ try{ document.body.removeChild(ifrm); }catch(e){} }, 5000);
-    } catch(e){}
-  }
+  // Envoi vers Google Sheets via Apps Script
+  const SHEET_URL = "https://script.google.com/macros/s/AKfycbySdaODf7i7ppuGHPfZid6A3n50CrI4ZMfQ3MTFdEcX03rv2Loy-Qu-5Gf99_9f8LIx/exec";
+  try {
+    const params = new URLSearchParams({
+      name:n, phone:p, city:c||"—", model:m||"PS4",
+      version:v||"—",
+      hdd:lead.hdd||"—", price:String(price),
+      date:new Date().toLocaleString("fr")
+    });
+    fetch(SHEET_URL + "?" + params.toString(), {mode:"no-cors"}).catch(()=>{});
+    const img = new Image();
+    img.src = SHEET_URL + "?" + params.toString();
+  } catch(e){}
 
   const msg=`مرحباً بشير! 🎮
 اسمي: ${n}
