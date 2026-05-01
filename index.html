@@ -90,11 +90,14 @@ body::after{content:"";position:fixed;inset:0;background-image:linear-gradient(r
 .bot .bbl{background:var(--s2);border:1px solid var(--bd);border-bottom-right-radius:4px;color:var(--tx);}
 .usr .bbl{background:linear-gradient(135deg,#0369a1,#0ea5e9);border-bottom-left-radius:4px;color:#fff;}
 .qrs{display:flex;flex-wrap:wrap;gap:7px;padding:3px 0 6px 40px;animation:fu .4s ease;}
-.qr{background:linear-gradient(135deg,var(--s2),#162035);border:1px solid #2a4068;border-radius:20px;padding:8px 15px;font-size:13px;font-family:"Tajawal",sans-serif;color:var(--b2);cursor:pointer;transition:all .22s;position:relative;overflow:hidden;}
+.qr{background:linear-gradient(135deg,var(--s2),#162035);border:1px solid #2a4068;border-radius:20px;padding:10px 18px;font-size:14.5px;font-family:"Tajawal",sans-serif;color:var(--b2);cursor:pointer;transition:all .22s;position:relative;overflow:hidden;}
 .qr::after{content:"";position:absolute;inset:0;background:linear-gradient(105deg,transparent 40%,rgba(14,165,233,.15) 50%,transparent 60%);transform:translateX(-100%);transition:transform .4s;}
 .qr:hover{background:linear-gradient(135deg,#1a3050,#0f2240);border-color:var(--blue);color:#fff;transform:translateY(-2px);box-shadow:0 4px 16px #0ea5e930;}
 .qr:hover::after{transform:translateX(100%);}
 .qr:active{transform:translateY(0) scale(.97);}
+.qr-priority{background:linear-gradient(135deg,#1a1a2e,#2d1b4e,#3d2060) !important;border:1.5px solid #a855f7 !important;color:#e9d5ff !important;font-size:13.5px !important;padding:9px 16px !important;box-shadow:0 0 12px #a855f730;animation:priority-pulse 2s ease-in-out infinite;font-weight:700 !important;width:100%;}
+.qr-priority:hover{background:linear-gradient(135deg,#2d1b4e,#4c1d95) !important;border-color:#c084fc !important;box-shadow:0 6px 20px #a855f740 !important;transform:translateY(-2px) !important;}
+@keyframes priority-pulse{0%,100%{box-shadow:0 0 12px #a855f730,0 0 0 0 #a855f720}50%{box-shadow:0 0 18px #a855f745,0 0 0 7px #a855f700}}
 .typing{display:flex;gap:5px;padding:12px 15px;align-items:center;}
 .typing span{width:7px;height:7px;background:var(--mu);border-radius:50%;animation:bounce 1.2s infinite;}
 .typing span:nth-child(2){animation-delay:.2s;}.typing span:nth-child(3){animation-delay:.4s;}
@@ -600,9 +603,9 @@ const INTENTS = [
         h:`🎮 <b>شنوا نوع Play Mta3ek?</b><br>اختر نوع جهازك 👇`,
         x:`<div class="step-box" style="padding:12px;">
 <div style="display:flex;flex-direction:column;gap:9px;">
-<button onclick="showCompatFat()" style="width:100%;padding:12px;background:linear-gradient(90deg,#16a34a,#22c55e);border:none;border-radius:10px;color:#fff;font-size:15px;font-weight:900;cursor:pointer;font-family:Tajawal,sans-serif;">🎮 PS4 Phat</button>
-<button onclick="showCompatSlim()" style="width:100%;padding:12px;background:linear-gradient(90deg,#0369a1,#0ea5e9);border:none;border-radius:10px;color:#fff;font-size:15px;font-weight:900;cursor:pointer;font-family:Tajawal,sans-serif;">🎮 PS4 Slim</button>
-<button onclick="showCompatPro()" style="width:100%;padding:12px;background:linear-gradient(90deg,#7c3aed,#a855f7);border:none;border-radius:10px;color:#fff;font-size:15px;font-weight:900;cursor:pointer;font-family:Tajawal,sans-serif;">🎮 PS4 Pro</button>
+<button dir="ltr" onclick="showCompatFat()" style="width:100%;padding:12px;background:linear-gradient(90deg,#16a34a,#22c55e);border:none;border-radius:10px;color:#fff;font-size:15px;font-weight:900;cursor:pointer;font-family:Tajawal,sans-serif;">🎮 PS4 Phat</button>
+<button dir="ltr" onclick="showCompatSlim()" style="width:100%;padding:12px;background:linear-gradient(90deg,#0369a1,#0ea5e9);border:none;border-radius:10px;color:#fff;font-size:15px;font-weight:900;cursor:pointer;font-family:Tajawal,sans-serif;">🎮 PS4 Slim</button>
+<button dir="ltr" onclick="showCompatPro()" style="width:100%;padding:12px;background:linear-gradient(90deg,#7c3aed,#a855f7);border:none;border-radius:10px;color:#fff;font-size:15px;font-weight:900;cursor:pointer;font-family:Tajawal,sans-serif;">🎮 PS4 Pro</button>
 </div>
 </div>`,
         wa:false
@@ -621,7 +624,7 @@ const INTENTS = [
 2️⃣ أحضره أو أرسله بالبريد السريع<br>
 3️⃣ Installation Jeux + Entretien Complet GRATUIT<br>
 4️⃣ توصيل لبابك 🏠✅
-<button onclick="processInput('__goto_boutique__','🏷️ رؤية الأسعار')" style="width:100%;margin-top:10px;padding:11px;background:linear-gradient(90deg,#f59e0b,#fbbf24);border:none;border-radius:8px;color:#000;font-size:14px;font-weight:900;cursor:pointer;font-family:Tajawal,sans-serif;">🏷️ رؤية الأسعار</button>
+<button dir="ltr" onclick="processInput('__goto_boutique__','🏷️ رؤية الأسعار')" style="width:100%;margin-top:10px;padding:11px;background:linear-gradient(90deg,#f59e0b,#fbbf24);border:none;border-radius:8px;color:#000;font-size:14px;font-weight:900;cursor:pointer;font-family:Tajawal,sans-serif;">🏷️ رؤية الأسعار</button>
 </div>`, wa:false
       };
     }
@@ -752,8 +755,8 @@ const INTENTS = [
 ];
 
 const QRS = [
-  {l:"🔍 Play Mta3i compatible? / قابل للبرمجة?", t:"هل جهازي قابل للبرمجة؟", priority:true},
-  {l:"🎮 Installation Jeux", t:"تسطيب الألعاب"},
+  {l:"Play Mta3i Najem Nsob Fih JEUX ? 🎮", t:"هل جهازي قابل للبرمجة؟", priority:true},
+  {l:"9adeh Men Lo3ba Najem Nsob ? 🎮", t:"تسطيب الألعاب"},
   {l:"🕹️ 9adeh Teb9a wa9t leplay?", t:"9adeh Teb9a wa9t leplay"},
   {l:"📦 kifech Nab3athlk LePlay 😉", t:"كيف أبعث الجهاز؟"},
   {l:"📍 Adresse / الموقع", t:"وين موقعكم؟"},
@@ -858,7 +861,7 @@ function showCompatFat(){
   document.querySelectorAll('.step-box, .qrs').forEach(e=>e.remove());
   compatibleChecked = true;
   addScore(4);
-  addMsg(`<div class="bbl">✅ <b>PS4 Phat — Compatible 100%</b><br>جميع الإصدارات قابلة للبرمجة بدون استثناء 🎉<br><img src="${IMG_FAT_BACK}" style="width:100%;border-radius:9px;margin-top:8px;border:1px solid #1e3a5f;"/><br>✅ Play Mta3ek Yemchi بدون مشاكل!<br><br>👇 <b>اذهب الآن واضغط على الزر:</b><br><button onclick="processInput('احجز','CBon ✅ Fhemtk N7eb Nriguel Play MTA3I💯🔥')" style="width:100%;margin-top:10px;padding:13px;background:linear-gradient(135deg,#16a34a,#22c55e,#4ade80);background-size:200%;border:none;border-radius:12px;color:#fff;font-size:14px;font-weight:900;cursor:pointer;font-family:Tajawal,sans-serif;box-shadow:0 5px 20px #22c55e44;position:relative;overflow:hidden;transition:all .3s;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">CBon ✅ Fhemtk N7eb Nriguel Play MTA3I💯🔥</button></div>`,"bot");
+  addMsg(`<div class="bbl">✅ <b>PS4 Phat — Compatible 100%</b><br>جميع الإصدارات قابلة للبرمجة بدون استثناء 🎉<br><img src="${IMG_FAT_BACK}" style="width:100%;border-radius:9px;margin-top:8px;border:1px solid #1e3a5f;"/><br>✅ Play Mta3ek Yemchi بدون مشاكل!<br><br>👇 <b>اذهب الآن واضغط على الزر:</b><br><button dir="ltr" onclick="processInput('احجز','CBon ✅ Fhemtk N7eb Nriguel Play MTA3I💯🔥')" style="width:100%;margin-top:10px;padding:13px;background:linear-gradient(135deg,#16a34a,#22c55e,#4ade80);background-size:200%;border:none;border-radius:12px;color:#fff;font-size:14px;font-weight:900;cursor:pointer;font-family:Tajawal,sans-serif;box-shadow:0 5px 20px #22c55e44;position:relative;overflow:hidden;transition:all .3s;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">CBon ✅ Fhemtk N7eb Nriguel Play MTA3I💯🔥</button></div>`,"bot");
   showQR();
 }
 function showCompatSlim(){
@@ -881,7 +884,7 @@ function showCompatPro(){
   document.querySelectorAll('.step-box, .qrs').forEach(e=>e.remove());
   compatibleChecked = true;
   addScore(4);
-  addMsg(`<div class="bbl">✅ <b>PS4 Pro — Compatible 100%</b><br>جميع الإصدارات قابلة للبرمجة 🎉<br><small style="color:#fbbf24;font-weight:900;">تحقق من الفيشة الخلفية — لازم تكون كبيرة كما في الصورة 👇</small><br><img src="${IMG_PRO_BIG}" style="width:100%;border-radius:9px;margin-top:8px;border:2px solid #4ade80;"/><br><div style="background:#1a0a0a;border:2px solid #ef4444;border-radius:10px;padding:10px 12px;margin-top:8px;text-align:right;"><div style="font-size:13px;font-weight:900;color:#ff6b6b;margin-bottom:5px;">⚠️ تنبيه</div><div style="font-size:13px;color:#fff;font-weight:700;line-height:1.7;">إذا كانت الفيشة الخلفية عندك <b style="color:#fbbf24;">صغيرة</b> مثل PS4 Slim<br>Lazem Tjibelna Play bch Nchoufouha sur Place — Programmeable ou non 🔧</div></div><br>👇 <b>اذهب الآن واضغط على الزر:</b><br><button onclick="processInput('احجز','CBon ✅ Fhemtk N7eb Nriguel Play MTA3I💯🔥')" style="width:100%;margin-top:10px;padding:13px;background:linear-gradient(135deg,#16a34a,#22c55e,#4ade80);background-size:200%;border:none;border-radius:12px;color:#fff;font-size:14px;font-weight:900;cursor:pointer;font-family:Tajawal,sans-serif;box-shadow:0 5px 20px #22c55e44;transition:all .3s;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">CBon ✅ Fhemtk N7eb Nriguel Play MTA3I💯🔥</button></div>`,"bot");
+  addMsg(`<div class="bbl">✅ <b>PS4 Pro — Compatible 100%</b><br>جميع الإصدارات قابلة للبرمجة 🎉<br><small style="color:#fbbf24;font-weight:900;">تحقق من الفيشة الخلفية — لازم تكون كبيرة كما في الصورة 👇</small><br><img src="${IMG_PRO_BIG}" style="width:100%;border-radius:9px;margin-top:8px;border:2px solid #4ade80;"/><br><div style="background:#1a0a0a;border:2px solid #ef4444;border-radius:10px;padding:10px 12px;margin-top:8px;text-align:right;"><div style="font-size:13px;font-weight:900;color:#ff6b6b;margin-bottom:5px;">⚠️ تنبيه</div><div style="font-size:13px;color:#fff;font-weight:700;line-height:1.7;">إذا كانت الفيشة الخلفية عندك <b style="color:#fbbf24;">صغيرة</b> مثل PS4 Slim<br>Lazem Tjibelna Play bch Nchoufouha sur Place — Programmeable ou non 🔧</div></div><br>👇 <b>اذهب الآن واضغط على الزر:</b><br><button dir="ltr" onclick="processInput('احجز','CBon ✅ Fhemtk N7eb Nriguel Play MTA3I💯🔥')" style="width:100%;margin-top:10px;padding:13px;background:linear-gradient(135deg,#16a34a,#22c55e,#4ade80);background-size:200%;border:none;border-radius:12px;color:#fff;font-size:14px;font-weight:900;cursor:pointer;font-family:Tajawal,sans-serif;box-shadow:0 5px 20px #22c55e44;transition:all .3s;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">CBon ✅ Fhemtk N7eb Nriguel Play MTA3I💯🔥</button></div>`,"bot");
   showQR();
 }
 
@@ -910,7 +913,7 @@ function checkCUH(){
     } else if(val.match(/^CUH-\d{4}[A-Z]$/)){
       addScore(4);
       compatibleChecked = true;
-      addMsg(`<div class="bbl">✅ <b>${val}</b><br>🎉 <b>Play Mta3ek Compatible!</b><br>يمكن برمجتها بدون مشاكل ✅<br><br>👇 <b>اذهب الآن واضغط على الزر:</b><br><button onclick="processInput('احجز','CBon ✅ Fhemtk N7eb Nriguel Play MTA3I💯🔥')" style="width:100%;margin-top:10px;padding:13px;background:linear-gradient(135deg,#16a34a,#22c55e,#4ade80);background-size:200%;border:none;border-radius:12px;color:#fff;font-size:14px;font-weight:900;cursor:pointer;font-family:Tajawal,sans-serif;box-shadow:0 5px 20px #22c55e44;transition:all .3s;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">CBon ✅ Fhemtk N7eb Nriguel Play MTA3I💯🔥</button></div>`, "bot");
+      addMsg(`<div class="bbl">✅ <b>${val}</b><br>🎉 <b>Play Mta3ek Compatible!</b><br>يمكن برمجتها بدون مشاكل ✅<br><br>👇 <b>اذهب الآن واضغط على الزر:</b><br><button dir="ltr" onclick="processInput('احجز','CBon ✅ Fhemtk N7eb Nriguel Play MTA3I💯🔥')" style="width:100%;margin-top:10px;padding:13px;background:linear-gradient(135deg,#16a34a,#22c55e,#4ade80);background-size:200%;border:none;border-radius:12px;color:#fff;font-size:14px;font-weight:900;cursor:pointer;font-family:Tajawal,sans-serif;box-shadow:0 5px 20px #22c55e44;transition:all .3s;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">CBon ✅ Fhemtk N7eb Nriguel Play MTA3I💯🔥</button></div>`, "bot");
       showQR();
     } else {
       addMsg(`<div class="bbl">🔍 <b>${val}</b><br>الرقم ما نعرفوش بالضبط — تأكد من الكتابة الصحيحة<br><small style="color:var(--mu);">الرقم عادةً يكون مثل: 1216A / 2016B / 2216B</small></div>`, "bot");
@@ -948,7 +951,10 @@ function buildBot(res){
 function showQR(){
   const d=document.createElement("div"); d.className="qrs";
   QRS.forEach(q=>{
-    const b=document.createElement("button"); b.className="qr"; b.textContent=q.l;
+    const b=document.createElement("button");
+    b.className = q.priority ? "qr qr-priority" : "qr";
+    b.setAttribute("dir","ltr");
+    b.textContent=q.l;
     b.onclick=()=>{ d.remove(); processInput(q.t,q.l); };
     d.appendChild(b);
   });
@@ -965,7 +971,7 @@ function processInput(text,display){
   if(!compatibleChecked && !skipCheck.includes(text) && text !== "احجز" && !text.match(/قابل|compatible|cuh|CUH|9adeh|teb9a|wa9t|leplay/i)){
     document.querySelectorAll(".qrs").forEach(e=>e.remove());
     addMsg(`<div class="bbl" style="border:1.5px solid #ef4444;">⚠️ <b>Attendez!</b><br>قبل أي شيء — تحقق أول إذا جهازك قابل للبرمجة 👇<br><small style="color:var(--mu);">بعد التحقق تقدر تكمل</small></div>`,"bot");
-    setTimeout(()=>{ processInput("هل جهازي قابل للبرمجة؟","🔍 Play Mta3i compatible? / قابل للبرمجة?"); }, 600);
+    setTimeout(()=>{ processInput("هل جهازي قابل للبرمجة؟","Play Mta3i Najem Nsob Fih JEUX ? 🎮"); }, 600);
     return;
   }
   if(text==="__goto_boutique__"){
